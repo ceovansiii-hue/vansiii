@@ -1,9 +1,11 @@
 .case-study-page {
   padding-top: 80px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 .case-study-hero {
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-xl) 0 var(--spacing-xxl);
 }
 
 .case-study-header {
@@ -16,39 +18,55 @@
   justify-content: center;
   gap: var(--spacing-md);
   margin-bottom: var(--spacing-md);
+  flex-wrap: wrap;
 }
 
 .case-study-meta span {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-gray-medium);
-  font-weight: 500;
+  color: var(--color-accent);
+  font-weight: 700;
+  background-color: rgba(255, 90, 115, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+[data-theme="dark"] .case-study-meta span {
+  background-color: rgba(255, 90, 115, 0.15);
 }
 
 .case-study-header h1 {
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  margin-bottom: var(--spacing-sm);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: var(--spacing-md);
   letter-spacing: -0.03em;
+  color: var(--color-text);
 }
 
 .case-study-client-name {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: var(--color-gray-medium);
-  font-weight: 300;
+  font-weight: 500;
 }
 
 .case-study-hero-image {
   width: 100%;
   aspect-ratio: 16/9;
   overflow: hidden;
-  border-radius: 2px;
+  border-radius: 12px;
+  margin-top: var(--spacing-xl);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .case-study-hero-image {
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
 }
 
 .case-study-hero-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .case-study-content {
@@ -58,31 +76,33 @@
 .content-section {
   margin-bottom: var(--spacing-xl);
   padding-bottom: var(--spacing-xl);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .content-section:last-child {
   border-bottom: none;
+  padding-bottom: 0;
 }
 
 .content-section h2 {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin-bottom: var(--spacing-md);
-  color: var(--color-gray-medium);
-  font-weight: 600;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-accent);
+  font-weight: 700;
 }
 
 .content-section p {
-  font-size: 1.3rem;
-  line-height: 1.9;
-  color: var(--color-black);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--color-text);
+  font-weight: 400;
 }
 
 .result-highlight {
-  font-weight: 500;
-  color: var(--color-black);
+  font-weight: 600;
+  color: var(--color-accent);
 }
 
 .case-study-images {
@@ -90,15 +110,25 @@
   background-color: var(--color-gray-light);
 }
 
+[data-theme="dark"] .case-study-images {
+  background-color: #1a1a1a;
+}
+
 .images-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   gap: var(--spacing-lg);
 }
 
 .case-image {
   aspect-ratio: 4/3;
   overflow: hidden;
+  border-radius: 12px;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.case-image:hover {
+  transform: scale(1.02);
 }
 
 .case-image img {
@@ -109,13 +139,22 @@
 
 .case-study-nav {
   padding: var(--spacing-xxl) 0;
+  border-top: 1px solid var(--color-border);
 }
 
 .nav-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-lg);
+}
+
+.nav-content .btn-primary {
+  order: 2;
+}
+
+.nav-content .btn-secondary {
+  order: 1;
 }
 
 @media (max-width: 768px) {
@@ -123,16 +162,22 @@
     padding-top: 60px;
   }
 
+  .case-study-hero {
+    padding: var(--spacing-lg) 0 var(--spacing-xl);
+  }
+
   .case-study-hero-image {
     aspect-ratio: 1/1;
+    margin-top: var(--spacing-lg);
   }
 
   .content-section p {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
 
   .images-grid {
     grid-template-columns: 1fr;
+    gap: var(--spacing-md);
   }
 
   .nav-content {
@@ -143,5 +188,6 @@
   .nav-content .btn-secondary {
     width: 100%;
     text-align: center;
+    order: auto;
   }
 }

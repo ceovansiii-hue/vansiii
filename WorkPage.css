@@ -1,5 +1,7 @@
 .work-page {
   padding-top: 80px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 .work-hero {
@@ -11,12 +13,13 @@
   font-size: clamp(2.5rem, 6vw, 5rem);
   margin-bottom: var(--spacing-md);
   letter-spacing: -0.03em;
+  color: var(--color-text);
 }
 
 .work-subtitle {
   font-size: clamp(1.2rem, 2vw, 1.5rem);
   color: var(--color-gray-medium);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.6;
 }
 
@@ -26,51 +29,70 @@
 
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: var(--spacing-xl);
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--spacing-lg);
+  grid-auto-rows: auto;
 }
 
 .work-card {
   overflow: hidden;
+  border-radius: 12px;
+  background-color: var(--color-white);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+}
+
+[data-theme="dark"] .work-card {
+  background-color: #1a1a1a;
+}
+
+.work-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] .work-card:hover {
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
 }
 
 .work-link {
   display: block;
+  text-decoration: none;
 }
 
 .work-image {
   position: relative;
-  aspect-ratio: 4/3;
   overflow: hidden;
-  margin-bottom: var(--spacing-md);
+  aspect-ratio: 1;
 }
 
 .work-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .work-overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: var(--transition);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .view-project {
   color: var(--color-white);
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
 }
 
 .work-card:hover .work-image img {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .work-card:hover .work-overlay {
@@ -80,52 +102,65 @@
 .work-info {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: 0.75rem;
+  padding: var(--spacing-md);
 }
 
 .work-meta {
   display: flex;
-  justify-content: space-between;
+  gap: var(--spacing-sm);
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .work-category {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  color: var(--color-accent);
+  font-weight: 600;
+  background-color: rgba(255, 90, 115, 0.1);
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+}
+
+[data-theme="dark"] .work-category {
+  background-color: rgba(255, 90, 115, 0.15);
+}
+
+.work-year {
+  font-size: 0.75rem;
   color: var(--color-gray-medium);
   font-weight: 500;
 }
 
-.work-year {
-  font-size: 0.85rem;
-  color: var(--color-gray-medium);
-}
-
 .work-info h3 {
-  font-size: 1.75rem;
+  font-size: 1.3rem;
   letter-spacing: -0.02em;
-  margin-top: var(--spacing-xs);
+  margin-top: 0.25rem;
+  color: var(--color-text);
+  font-weight: 600;
+  line-height: 1.4;
 }
 
 .work-client {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--color-gray-medium);
   font-weight: 500;
 }
 
 .work-description {
-  font-size: 1.05rem;
-  line-height: 1.7;
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: var(--color-gray-medium);
-  margin-top: var(--spacing-xs);
+  margin-top: 0.25rem;
 }
 
 .work-result {
-  font-weight: 600;
-  font-size: 1rem;
-  margin-top: var(--spacing-xs);
-  color: var(--color-black);
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  color: var(--color-accent);
 }
 
 .work-cta {
@@ -137,6 +172,7 @@
   font-size: clamp(2rem, 4vw, 3.5rem);
   margin-bottom: var(--spacing-md);
   letter-spacing: -0.03em;
+  color: var(--color-text);
 }
 
 .work-cta .cta-content p {
@@ -153,6 +189,10 @@
 
   .work-grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
+  }
+
+  .work-info {
+    padding: var(--spacing-md);
   }
 }
